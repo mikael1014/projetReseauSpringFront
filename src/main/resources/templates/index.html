@@ -22,7 +22,7 @@
                             <div>
                                 <!-- Check for registration error -->
                                 <div th:if="${registrationError}" class="alert alert-danger col-xs-offset-1 col-xs-10">
-                                    <p>Un utilisateur possedant ce login a dÈj‡ ÈtÈ enregistrÈ</p>
+                                    <p>Un utilisateur poss√©dant ce login a d√©j√† √©t√© enregistr√©</p>
                                 </div>
 
                             </div>
@@ -31,9 +31,9 @@
 
                     <div class="form-group">
                         <label for="register_prenom:">
-                            <span th:text="#{prenom}">prenom</span>: <input type="text" th:field="*{prenom}" name="register_prenom" class="form-control" id="register_prenom" required/>
+                            <span th:text="#{prenom}">Prenom</span>: <input type="text" th:field="*{prenom}" name="register_prenom" class="form-control" id="register_prenom" required/>
                         </label>
-                        <div class="help-block register_prenom_error hidden">Veuillez fournir un prÈnom valide</div>
+                        <div class="help-block register_prenom_error hidden">Veuillez fournir un pr√©nom valide</div>
                         <div th:if="${#fields.hasErrors('prenom')}" style="margin-bottom: 25px" class="text-danger">
                             <ul>
                                 <li th:each="err : ${#fields.errors('prenom')}" th:text="'prenom ' + ${err}" />
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         <label for="register_nom">
-                            <span th:text="#{nom}">nom</span>: <input type="text" th:field="*{nom}" name="register_nom" class="form-control" id="register_nom" required/>
+                            <span th:text="#{nom}">Nom</span>: <input type="text" th:field="*{nom}" name="register_nom" class="form-control" id="register_nom" required/>
                         </label>
                         <div class="help-block register_nom_error hidden">Veuillez fournir un nom valide</div>
                         <div th:if="${#fields.hasErrors('nom')}" style="margin-bottom: 25px" class="text-danger">
@@ -66,7 +66,7 @@
                         <label for="register_password">
                             <span th:text="#{index.password}">Password</span>: <input type="password" th:field="*{password}" name="register_password" class="form-control register_password" id="register_password" required/>
                         </label>
-                        <div class="help-block register_password_error hidden">Veuillez respecter ceci : lettre(s) et chiffre(s) au moins une fois, minimum 6 characters</div>
+                        <div class="help-block register_password_error hidden">Veuillez respecter ceci : lettre(s) et chiffre(s) au moins une fois, minimum 6 caract√®res</div>
                         <div th:if="${#fields.hasErrors('password')}" style="margin-bottom: 25px" class="text-danger">
                             <ul>
                                 <li th:each="err : ${#fields.errors('password')}" th:text="'Password ' + ${err}" />
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="register_password_confirm">
-                            <span th:text="#{index.confirm.password}">Confirmez le mot de passe</span>: <input type="password" th:field="*{passwordConfirmation}" name="register_password_confirm" class="form-control register_password_confirm" id="register_password_confirm" required/>
+                            <span th:text="#{index.confirm.password}">Confirmer le mot de passe</span>: <input type="password" th:field="*{passwordConfirmation}" name="register_password_confirm" class="form-control register_password_confirm" id="register_password_confirm" required/>
                         </label>
                         <div class="help-block register_password_confirm_error hidden">Les mots de passe ne correspondent pas</div>
                         <div th:if="${#fields.hasErrors('passwordConfirmation')}" style="margin-bottom: 25px" class="text-danger">

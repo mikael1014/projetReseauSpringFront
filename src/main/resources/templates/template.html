@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header(title, csrf)">
-<!--     <meta charset="utf-8"> -->
+    <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" th:if="${csrf}" th:content="${_csrf.token}"/>
@@ -27,16 +27,16 @@
             <a class="navbar-brand" th:href="@{/}" th:text="#{header}">Réseau social</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form th:if="${session.utilisateur == null}" action="#" th:action="@{/authenticateUtilisateur}" method="POST" class="navbar-form navbar-right">
+            <form th:if="${session.user == null}" action="#" th:action="@{/authenticateUtilisateur}" method="POST" class="navbar-form navbar-right">
                 <div class="form-group">
-                    <input name="utilisateurname" type="text" placeholder="Utilisateur name" class="form-control login_email">
+                    <input name="username" type="text" placeholder="Utilisateur name" class="form-control login_email">
                 </div>
                 <div class="form-group">
                     <input name="password" type="password" placeholder="Password" class="form-control login_password">
                 </div>
                 <button type="submit" class="btn btn-success login_submit" th:text="#{login}">Connexion</button>
             </form>
-            <form th:if="${session.utilisateur != null}" th:action="@{/logout}" method="POST" class="navbar-form navbar-right">
+            <form th:if="${session.user != null}" th:action="@{/logout}" method="POST" class="navbar-form navbar-right">
                 <button type="submit" class="btn btn-success" th:text="#{logout}">Deconnexion</button>
             </form>
             <div class="navbar-right" >
@@ -52,11 +52,11 @@
     <div class="container">
         <h1 th:text="#{index.intro}">Installations de réseaux sociaux:</h1>
         <ul class="list-inline">
-            <li>&bull; <span th:text="#{index.registration}">Registration</span></li>
-            <li>&bull; <span th:text="#{index.registration}">Authorization</span></li>
+            <li>&bull; <span th:text="#{index.registration}">Inscription</span></li>
+            <li>&bull; <span th:text="#{index.authorization}">Autorisation</span></li>
             <li>&bull; <span th:text="#{index.profile}">Affichage et modification du profil</span></li>
-            <li>&bull; <span th:text="#{index.utilisateur.search}">Recherche d'utilisateurs</span></li>
-            <li>&bull; <span th:text="#{index.friends}">Friends</span></li>
+            <li>&bull; <span th:text="#{index.user.search}">Recherche d'utilisateurs</span></li>
+            <li>&bull; <span th:text="#{index.friends}">Amis</span></li>
             <li>&bull; <span th:text="#{index.messages}">Messages</span></li>
         </ul>
         <hr/>
@@ -71,29 +71,29 @@
 
             <div class="panel panel-default ">
                 <div class="panel-heading">
-                    <h3 class="panel-title" th:text="#{menu.utilisateur.menu}">Utilisateur menu</h3>
+                    <h3 class="panel-title" th:text="#{menu.user.menu}">Menu d'utilisateur</h3>
                 </div>
                 <div class="list-group">
                     <a th:href="@{/utilisateur/profile}" class="list-group-item" th:text="#{menu.profile}">Profile</a>
                     <a th:href="@{/utilisateur/messages}" class="list-group-item" th:text="#{menu.messages}">Messages</a>
                     <a th:href="@{/utilisateur/friends}" class="list-group-item" th:text="#{menu.friends}">Amis</a>
-                    <a th:href="@{/utilisateur/utilisateurs}" class="list-group-item" th:text="#{menu.utilisateurs}">Utilisateurs</a>
+                    <a th:href="@{/utilisateur/utilisateurs}" class="list-group-item" th:text="#{menu.users}">Utilisateurs</a>
                     <a th:href="@{/utilisateur/settings}" class="list-group-item" th:text="#{menu.settings}">Réglages</a>
                 </div>
             </div>
         </div>
         <div class="col-md-9">
             <p>
-                <a th:fragment="profileImage(utilisateur)" th:href="@{'/utilisateur/profile/' + ${utilisateur.id}}">
+                <a th:fragment="profileImage(utilisateur)" th:href="@{'/utilisateur/profile/' + ${user.id}}">
                     <img class="img-circle img-thumbnail img-message"
-                         th:src="@{'/' + ${utilisateur.image}}" alt="Utilisateur's image">
-                    <span th:text="${utilisateur.Prenom + ' ' + utilisateur.lastName}">Sansa Stark</span>
+                         th:src="@{'/' + ${user.image}}" alt="Avatar utilisateur">
+                    <span th:text="${user.firstName + ' ' + user.lastName}">Sansa Stark</span>
                 </a>
             </p>
             <p>
-                <a th:fragment="messageUtilisateur(utilisateur)" th:href="@{'/utilisateur/profile/' + ${utilisateur.id}}">
-                    <img class="img-circle img-thumbnail img-message" th:src="@{'/' + ${utilisateur.image}}" />
-                    <span th:text="${utilisateur.Prenom}">Tyrion</span>
+                <a th:fragment="messageUtilisateur(utilisateur)" th:href="@{'/utilisateur/profile/' + ${user.id}}">
+                    <img class="img-circle img-thumbnail img-message" th:src="@{'/' + ${user.image}}" />
+                    <span th:text="${user.firstName}">Tyrion</span>
                 </a>
             </p>
         </div>
